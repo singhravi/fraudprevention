@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Fraud Prevention: QR & OTP Security</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .perspective {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900">
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-800 mb-4">Mastering Fraud Prevention</h1>
+            <p class="text-lg text-slate-600">Flashcards for QR & OTP Security. Click a card to reveal the answer.</p>
+        </header>
+
+        <div id="flashcards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Flashcards will be injected here by JavaScript -->
+        </div>
+
+        <footer class="mt-16 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 Fraud Prevention Training. Stay Safe, Stay Alert.</p>
+        </footer>
+    </div>
+
+    <script>
+        const flashcardsData = [
+            {
+                "front": "Quishing",
+                "back": "A phishing attack that uses malicious QR codes to redirect victims to fraudulent websites or initiate unauthorized transactions."
+            },
+            {
+                "front": "Primary function of scanning a QR code in payment apps",
+                "back": "To initiate a 'Push' transaction, meaning you are sending or authorizing a payment from your own account."
+            },
+            {
+                "front": "Common scammer tactic for 'Advance Payments' on marketplaces",
+                "back": "Sending a QR code to the seller and claiming they must scan it to 'receive' the money."
+            },
+            {
+                "front": "Physical sign of a tampered public QR code",
+                "back": "The presence of a sticker or overlay placed on top of the original printed material."
+            },
+            {
+                "front": "One-Time Password (OTP)",
+                "back": "A unique, time-sensitive security token used as the final authorization step for a transaction or login."
+            },
+            {
+                "front": "The 'Golden Rule' of OTP safety",
+                "back": "Never share an OTP with anyone over the phone, even if they claim to be from a bank or government agency."
+            },
+            {
+                "front": "Information to verify in an OTP SMS message",
+                "back": "1. The transaction amount\n2. The merchant or recipient name\n3. The specific action being authorized (e.g., login vs. payment)"
+            },
+            {
+                "front": "Mirror Site",
+                "back": "A fraudulent website designed to visually replicate a legitimate service to capture user credentials or card details."
+            },
+            {
+                "front": "Social Engineering",
+                "back": "The psychological manipulation of individuals into divulging confidential information or performing insecure actions."
+            },
+            {
+                "front": "Red flag in a QR code URL preview",
+                "back": "A URL that uses strange domains, misspellings, or does not match the official branding of the establishment."
+            },
+            {
+                "front": "The 'Vishing' connection to OTPs",
+                "back": "Scammers call victims (Voice Phishing) to create panic and trick them into reading their OTP out loud."
+            },
+            {
+                "front": "Action to take if a public QR code looks suspicious",
+                "back": "Do not scan it; notify the establishment or authority responsible for the sign immediately."
+            },
+            {
+                "front": "Mnemonic for QR Safety: S.P.O.T.",
+                "back": "S: Sticker check\nP: Preview URL\nO: Official source\nT: Transaction type (Send vs. Receive)"
+            },
+            {
+                "front": "Why scammers prefer QR codes over links",
+                "back": "QR codes hide the destination URL from the user's immediate view, making phishing more successful."
+            },
+            {
+                "front": "The role of 'Urgency' in fraud",
+                "back": "Scammers create a sense of crisis to prevent the victim from thinking logically or verifying the request."
+            },
+            {
+                "front": "Reverse QR Code Scam",
+                "back": "A fraud where the victim scans a code expecting to receive money, but actually authorizes a payment to the scammer."
+            },
+            {
+                "front": "HTTPS and the Lock Icon",
+                "back": "Basic indicators of an encrypted connection, though they do not guarantee the site is not a phishing page."
+            },
+            {
+                "front": "Common 'Vishing' pretext",
+                "back": "Claiming there is a 'suspicious transaction' or 'account block' that requires immediate verification via OTP."
+            },
+            {
+                "front": "Did you know which group is often targeted by 'Marketplace' QR scams?",
+                "back": "Individual sellers of high-value used items like electronics, furniture, or vehicles."
+            },
+            {
+                "front": "OTP 'Closer' technique",
+                "back": "The scammer stays on the phone with the victim while initiating a fraudulent transaction to capture the OTP in real-time."
+            },
+            {
+                "front": "Risk of scanning QR codes for 'Free Wi-Fi'",
+                "back": "It may install malicious profiles on your device or redirect you to a page that steals your social media logins."
+            },
+            {
+                "front": "Importance of 'Cold Calling' awareness",
+                "back": "If you didn't initiate the contact, you should never provide any security codes or personal information."
+            },
+            {
+                "front": "ExifTool",
+                "back": "A technical tool used by investigators to read metadata in images, which can help identify fake profiles."
+            },
+            {
+                "front": "Credential Stuffing",
+                "back": "Using stolen usernames and passwords from one site to try and gain access to others, often bypassed by OTPs."
+            },
+            {
+                "front": "The 'Human Hack'",
+                "back": "A term for social engineering, highlighting that humans are often easier to exploit than technical systems."
+            }
+        ];
+
+        function createCard(data) {
+            const cardWrapper = document.createElement('div');
+            cardWrapper.className = 'perspective h-64';
+
+            cardWrapper.innerHTML = `
+                <div class="flip-card-inner relative w-full h-full shadow-lg rounded-xl">
+                    <div class="flip-card-front absolute w-full h-full bg-white border border-slate-200 rounded-xl">
+                        <h3 class="text-xl font-bold text-slate-800">${data.front}</h3>
+                    </div>
+                    <div class="flip-card-back absolute w-full h-full bg-indigo-600 text-white rounded-xl">
+                        <p class="text-lg leading-relaxed">${data.back.replace(/\n/g, '<br>')}</p>
+                    </div>
+                </div>
+            `;
+
+            const inner = cardWrapper.querySelector('.flip-card-inner');
+            cardWrapper.addEventListener('click', () => {
+                inner.classList.toggle('is-flipped');
+            });
+
+            return cardWrapper;
+        }
+
+        window.onload = function() {
+            const container = document.getElementById('flashcards-container');
+            flashcardsData.forEach(card => {
+                container.appendChild(createCard(card));
+            });
+        };
+    </script>
+</body>
+</html>
