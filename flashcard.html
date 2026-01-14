@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Cyber-Security Intelligence Cards</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --m1: #38bdf8;
+        --m2: #fb923c;
+        --m3: #c084fc;
+        --m4: #4ade80;
+        --text-main: #f8fafc;
+        --text-sub: #94a3b8;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        text-align: center;
+        max-width: 800px;
+        margin-bottom: 50px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: -1px;
+      }
+      .header p {
+        color: var(--text-sub);
+        font-size: 1.1rem;
+        margin-top: 10px;
+      }
+
+      .stats-bar {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 15px 30px;
+        border-radius: 50px;
+      }
+      .stat-item {
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        width: 100%;
+        max-width: 1400px;
+      }
+
+      .section-title {
+        grid-column: 1 / -1;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 40px;
+        border-left: 4px solid;
+        padding-left: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Card Mechanics */
+      .card {
+        height: 220px;
+        perspective: 1000px;
+        cursor: pointer;
+      }
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      .card.flipped .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        box-sizing: border-box;
+        text-align: center;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .card-front {
+        background: var(--card-bg);
+        color: var(--text-main);
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      /* Module Theming */
+      .mod-1 .section-title {
+        border-color: var(--m1);
+        color: var(--m1);
+      }
+      .mod-1 .card-back {
+        background: var(--m1);
+        color: #000;
+      }
+
+      .mod-2 .section-title {
+        border-color: var(--m2);
+        color: var(--m2);
+      }
+      .mod-2 .card-back {
+        background: var(--m2);
+        color: #000;
+      }
+
+      .mod-3 .section-title {
+        border-color: var(--m3);
+        color: var(--m3);
+      }
+      .mod-3 .card-back {
+        background: var(--m3);
+        color: #000;
+      }
+
+      .mod-4 .section-title {
+        border-color: var(--m4);
+        color: var(--m4);
+      }
+      .mod-4 .card-back {
+        background: var(--m4);
+        color: #000;
+      }
+
+      .footer {
+        margin-top: 80px;
+        color: var(--text-sub);
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Cyber Intelligence Flashcards</h1>
+      <p>Developed By: Ravi Shankar Singh, Head State e-Govenance Missio Team, Uttarakhand</p>
+      <p>Expert-level Fraud Awareness & Response Training</p>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="dot" style="background: var(--m1)"></span> Foundation
+      </div>
+      <div class="stat-item">
+        <span class="dot" style="background: var(--m2)"></span> Technical
+      </div>
+      <div class="stat-item">
+        <span class="dot" style="background: var(--m3)"></span> Schemes
+      </div>
+      <div class="stat-item">
+        <span class="dot" style="background: var(--m4)"></span> Response
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="mod-1 section-title">01. Social Engineering & Profiles</div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">What defines Social Engineering?</div>
+          <div class="card-back">
+            Manipulating human behavior to bypass security systems.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">The 'Fake Profile' bait?</div>
+          <div class="card-back">
+            Using stolen photos of attractive people or friends to gain trust.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Smishing definition?</div>
+          <div class="card-back">
+            Phishing specifically delivered via SMS or Instant Messaging.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Vishing core tactic?</div>
+          <div class="card-back">
+            Using voice calls to create panic and steal bank credentials.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">What is 'Authority' manipulation?</div>
+          <div class="card-back">
+            Posing as CEO or Police to bypass a victim's critical thinking.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">How to spot a fake URL?</div>
+          <div class="card-back">
+            Check for slight misspellings (e.g., 'g00gle.com' vs 'google.com').
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">What is 'Pretexting'?</div>
+          <div class="card-back">
+            Building a fake story to convince a victim to reveal information.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-1" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">The 'Baiting' scam?</div>
+          <div class="card-back">
+            Promising a reward (free download/gift) to infect a device with
+            malware.
+          </div>
+        </div>
+      </div>
+
+      <div class="mod-2 section-title">02. Transactions & Hardware</div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Marketplace Scam Rule?</div>
+          <div class="card-back">
+            Never pay 'Security Deposits' for items you haven't seen in person.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">ATM 'Shoulder Surfing'?</div>
+          <div class="card-back">
+            Physically watching a victim enter their PIN. Cover the keypad!
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">QR Code Red Flag?</div>
+          <div class="card-back">
+            Scanning a code should only be done to PAY, never to RECEIVE money.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">SIM Swap Warning Sign?</div>
+          <div class="card-back">
+            Sudden loss of network on your phone for no environmental reason.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">OTP Management?</div>
+          <div class="card-back">
+            Banks will NEVER call to ask for your One-Time Password.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">ATM Card Skimming?</div>
+          <div class="card-back">
+            Illegal devices on card slots that read your magnetic stripe.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Contactless (NFC) Fraud?</div>
+          <div class="card-back">
+            Scammers using portable PoS machines near your wallet. Use
+            RFID-blockers.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-2" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Fake Payment Screenshots?</div>
+          <div class="card-back">
+            Verify money in your bank app; never trust a 'Successful'
+            screenshot.
+          </div>
+        </div>
+      </div>
+
+      <div class="mod-3 section-title">03. High-Value Schemes</div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Ponzi Scheme Red Flag?</div>
+          <div class="card-back">
+            Guaranteed 100% returns with 'no risk'. If it's too good to be true,
+            it is.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Instant Loan App Trap?</div>
+          <div class="card-back">
+            Asking for access to contacts/photos. Used for blackmail later.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Matrimonial 'Emergency'?</div>
+          <div class="card-back">
+            Matches asking for money due to sudden illness or customs delay.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Fake Cashback Offers?</div>
+          <div class="card-back">
+            Links claiming you won a reward that lead to a fake UPI PIN page.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Work From Home Scam?</div>
+          <div class="card-back">
+            Asking for a 'Kit Fee' or 'Registration Fee' before starting a job.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Investment 'Pig Butchering'?</div>
+          <div class="card-back">
+            Long-term friendship built to lure you into a fake crypto platform.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Lottery/KBC Fraud?</div>
+          <div class="card-back">
+            Being told you won a contest you never actually participated in.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-3" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Deepfake Scams?</div>
+          <div class="card-back">
+            AI-generated video or voice of your boss/relative asking for money.
+          </div>
+        </div>
+      </div>
+
+      <div class="mod-4 section-title">04. Tools, Tech & Reporting</div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Screen Sharing Danger?</div>
+          <div class="card-back">
+            Apps like AnyDesk allow scammers to see your OTPs live.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Fake Customer Care?</div>
+          <div class="card-back">
+            Fake numbers listed on Google Maps for banks or airlines.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Immediate Financial Help?</div>
+          <div class="card-back">
+            Dial 1930 immediately to freeze transactions in India.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Portal for Reports?</div>
+          <div class="card-back">
+            www.cybercrime.gov.in — File your formal complaint here.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Chakshu Portal?</div>
+          <div class="card-back">
+            Report fraud SMS/WhatsApp BEFORE you lose money.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Unknown App Permission?</div>
+          <div class="card-back">
+            Never allow 'Accessibility' or 'SMS' permissions to unknown apps.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">Pandemic Scam Legacy?</div>
+          <div class="card-back">
+            Fake medical bills or vaccine links used to phish identity.
+          </div>
+        </div>
+      </div>
+      <div class="card mod-4" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">The Golden Hour Rule?</div>
+          <div class="card-back">
+            The first 2 hours are the ONLY window to reliably stop money flow.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Cyber Defense Training Modules | 2026 Edition | Secure Your Digital
+      Identity
+    </div>
+  </body>
+</html>
